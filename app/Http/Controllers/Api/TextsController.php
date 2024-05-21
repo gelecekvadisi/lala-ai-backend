@@ -32,14 +32,14 @@ class TextsController extends Controller
     public function store(Request $request)
     {
         $request->merge([
-                "prompt"=> json_decode($request->prompt, true)
+                "prompt"=> json_decode($request->prompt, true),
             ])->validate([
             "prompt" => "required|array",
             "prompt.*.role" => "required|string",
             "prompt.*.content" => "required|string|max:5000",
             // "prompt.*.content" => "required|string",
             "category_id" => "nullable|exists:categories,id",
-            'file' => 'nullable|mimes:pdf',
+            "file" => "file|mimes:pdf",
         ]);
 
         $user = auth()->user();
@@ -73,6 +73,27 @@ class TextsController extends Controller
                     ->get();
 
                 foreach ($api_keys as $api_key) {
+                    //  SEND FILE TO CHAT-GPT
+                    if ($request->hasFile("file")) {
+                        $file = $request->file('file');
+                        $fileResponse = Http::withHeaders([
+                            "Authorization" => "Bearer " . $api_key->key,
+                            // "Content-Type" => "application/json",
+                        ])
+                        ->timeout(300000)
+                        ->post("https://api.openai.com/v1/files", [
+                                "purpose" => "assistants",
+                                "file" => $file,
+                            ]);
+                            return response()->json([
+                                    "message" => "file upload successed!",
+                                ]);
+                    } else {
+                        return response()->json([
+                                    "message" => "file not found!",
+                                    "request" => $request->file,
+                                ]);
+                    }
                     //  SEND PROMPT TO CHAT-GPT
                     $response = Http::withHeaders([
                         "Authorization" => "Bearer " . $api_key->key,
@@ -106,8 +127,7 @@ class TextsController extends Controller
                     return response()->json(
                         [
                             "message" => __(
-                                "Please try again later or contact with admin. RESPONSE:" .
-                                    json_encode($result)
+                                "Please try again later or contact with admin."
                             ),
                         ],
                         422
