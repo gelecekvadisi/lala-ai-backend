@@ -86,6 +86,7 @@ class AuthController extends Controller
             $user = auth()->user();
             $data['name'] = $user->name;
             $data['email'] = $user->email;
+            $data['user_id'] = $user->id;
             $data['token'] = $user->createToken('createToken')->plainTextToken;
 
             $accessToken = $user->createToken('createToken');

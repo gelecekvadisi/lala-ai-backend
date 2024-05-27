@@ -63,4 +63,8 @@ class User extends Authenticatable
         return $this->belongsTo(Plan::class, 'plan_id');
     }
 
+    public function getId() {
+        return $this->id;
+    }
+
 }

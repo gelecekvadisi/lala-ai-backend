@@ -38,9 +38,10 @@ Route::prefix('v1')->group(function (){
         Route::apiResource('gateways', Api\AcnooGatewaysController::class)->only('index');
         Route::apiResource('credits', Api\CreditController::class)->only('index', 'store');
         Route::apiResource('buy-credits', Api\AcnooBuyCreditsContrller::class)->only('index', 'show');
+        Route::apiResource('favorite-assistant', Api\FavoriteAssistantController::class);
         Route::post('change-password', [Api\AcnooProfileController::class, 'changePassword']);
         Route::get('subscription/cancel', [Api\AcnooSubscribesController::class, 'cancel']);
-
+        
         Route::get('adnetworks', [Api\AcnooAdnetworksController::class, 'index']);
         Route::get('api-keys', [Api\AcnooApiKeyController::class, 'index']);
         Route::get('/sign-out', [Api\Auth\AuthController::class, 'maanSignOut']);

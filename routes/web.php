@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\FavoriteAssistantController;
 
 
 /*
@@ -23,6 +24,7 @@ Route::get('/cache-clear', function () {
     Artisan::call('cache:clear');
     return back()->with('success', __('Cache has been cleared.'));
 });
+// Route::get('favorite-assistant', [FavoriteAssistantController::class, 'index']);
 
 // Route::get('/reset', function () {
 //     Artisan::call('cache:clear');
