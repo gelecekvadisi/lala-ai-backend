@@ -39,6 +39,7 @@ Route::prefix('v1')->group(function (){
         Route::apiResource('credits', Api\CreditController::class)->only('index', 'store');
         Route::apiResource('buy-credits', Api\AcnooBuyCreditsContrller::class)->only('index', 'show');
         Route::apiResource('favorite-assistant', Api\FavoriteAssistantController::class);
+        Route::post('favorite-assistant/delete', [Api\FavoriteAssistantController::class, 'destroyByUserAndAssistant']);
         Route::post('change-password', [Api\AcnooProfileController::class, 'changePassword']);
         Route::get('subscription/cancel', [Api\AcnooSubscribesController::class, 'cancel']);
         
