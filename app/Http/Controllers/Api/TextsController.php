@@ -39,7 +39,7 @@ class TextsController extends Controller
             "prompt.*.content" => "required|string|max:5000",
             // "prompt.*.content" => "required|string",
             "category_id" => "nullable|exists:categories,id",
-            "file" => "file|mimes:pdf",
+            //"file" => "file|mimes:pdf",
         ]);
 
         $user = auth()->user();
@@ -74,7 +74,7 @@ class TextsController extends Controller
 
                 foreach ($api_keys as $api_key) {
                     //  SEND FILE TO CHAT-GPT
-                    if ($request->hasFile("file")) {
+                    /*if ($request->hasFile("file")) {
                         $file = $request->file('file');
                         $fileResponse = Http::withHeaders([
                             "Authorization" => "Bearer " . $api_key->key,
@@ -93,7 +93,7 @@ class TextsController extends Controller
                                     "message" => "file not found!",
                                     "request" => $request->file,
                                 ]);
-                    }
+                    }*/
                     //  SEND PROMPT TO CHAT-GPT
                     $response = Http::withHeaders([
                         "Authorization" => "Bearer " . $api_key->key,
