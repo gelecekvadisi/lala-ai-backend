@@ -6,9 +6,11 @@
 
 @section('main_content')
 <div class="mybazar-login-section">
-        <div class="mybazar-login-avatar">
-            <img src="{{ asset('assets/images/login/login-avatar.png') }}" alt="">
+    <div class="mybazar-login-wrapper"></div>
+        <div class="mybazar-login-avatar" style="width: 25%;">
+            <img src="{{ asset('assets/images/login/login-avatar.png') }}" alt="" style="width: %10">
         </div>
+        
         <div class="mybazar-login-wrapper">
             <div class="login-wrapper">
                 <div class="login-body w-100">
@@ -51,6 +53,7 @@
                 </div>
             </div>
         </div>
+        <div class="mybazar-login-wrapper"></div>
     </div>
     <input type="hidden" data-model="Login" id="auth">
 @endsection
