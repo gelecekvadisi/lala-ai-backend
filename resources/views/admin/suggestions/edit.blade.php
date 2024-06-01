@@ -21,6 +21,14 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
                                 <div class="row">
+                                    <div class="col-lg-12 mt-2">
+                                        <label>{{__('Name')}}</label>
+                                        <textarea name="name" class="form-control" placeholder="Name">{{ $suggestion->name }}</textarea>
+                                    </div>
+                                    <div class="col-lg-12 mt-2">
+                                        <label>{{__('Image Name')}}</label>
+                                        <textarea name="image_name" class="form-control" placeholder="Image Name">{{ $suggestion->image_name }}</textarea>
+                                    </div>
                                     <div class="col-lg-6 mt-2">
                                         <label>{{__('Category')}}</label>
                                         <div class="gpt-up-down-arrow position-relative">

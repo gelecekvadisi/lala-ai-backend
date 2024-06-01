@@ -6,6 +6,8 @@
         </td>
         @endcan
         <td>{{ ($suggestions->perPage() * ($suggestions->currentPage() - 1)) + $loop->iteration }}</td>
+        <td>{{ $suggestion->name ?? '' }}</td>
+        <td>{{ $suggestion->image_name ?? '' }}</td>
         <td class="text-start">{{ Str::limit($suggestion->suggestions, 80) }}</td>
         <td>{{ $suggestion->category->name ?? '' }}</td>
         <td class="text-center w-150">
@@ -29,6 +31,8 @@
                     <li><a href="#view-modal" class="view-btn" data-bs-toggle="modal"
                            id="suggestion_view_{{ $suggestion->id }}"
                            data-id = "{{ $suggestion->id }}"
+                           data-name = "{{ $suggestion->name }}"
+                           data-image-name = "{{ $suggestion->image_name }}"
                            data-suggestions = "{{ $suggestion->suggestions }}"
                            data-category="{{ $suggestion->category->name ?? '' }}"
                            data-status = "{{ $suggestion->status }}">

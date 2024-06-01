@@ -35,6 +35,8 @@
                             </th>
                             @endcan
                             <th>{{ __('SL.') }}</th>
+                            <th>{{ __('Name') }}</th>
+                            <th>{{ __('Image Name') }}</th>
                             <th>{{ __('Suggestion') }}</th>
                             <th >{{ __('Category') }}</th>
                             <th class="text-center">{{ __('Status') }}</th>
@@ -61,6 +63,16 @@
                 </div>
                 <div class="modal-body">
                     <div class="personal-info">
+                        <div class="row mt-3">
+                            <div class="col-md-5"><p>Name</p></div>
+                            <div class="col-md-7"><p id="suggestion_view_name"></p></div>
+                        </div>
+                        <hr>
+                        <div class="row mt-3">
+                            <div class="col-md-5"><p>Image Name</p></div>
+                            <div class="col-md-7"><p id="suggestion_view_image_name"></p></div>
+                        </div>
+                        <hr>
                         <div class="row mt-3">
                             <div class="col-md-5"><p>Suggestion</p></div>
                             <div class="col-md-7"><p id="suggestion_view_suggestion"></p></div>

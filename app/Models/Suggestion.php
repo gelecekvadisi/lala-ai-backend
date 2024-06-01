@@ -17,6 +17,7 @@ class Suggestion extends Model
      */
     protected $fillable = [
         'name',
+        'image_name',
         'status',
         'suggestions',
         'category_id',
