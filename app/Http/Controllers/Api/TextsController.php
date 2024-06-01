@@ -102,7 +102,7 @@ class TextsController extends Controller
                     ->timeout(300000)
                     ->post("https://api.openai.com/v1/chat/completions", [
                         "messages" => $prompt_list,
-                        "model" => "gpt-4-turbo-preview",
+                        "model" => "gpt-4o",
                         "max_tokens" => 4000,
                         "temperature" => 1.0,
                     ]);
