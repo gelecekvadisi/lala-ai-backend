@@ -140,9 +140,10 @@ class TextsController extends Controller
                     ]);
                 }
                 
+                $titleMaxLength = 100;
                 $titleBase = $prompt_list[count($prompt_list)-1]["content"];
-                $title = substr($titleBase, 0, 40);
-                if (strlen($titleBase) > 40) {
+                $title = substr($titleBase, 0, $titleMaxLength);
+                if (strlen($titleBase) > $titleMaxLength) {
                     $title = $title."...";
                 }
                 // $title = "Prompt";
