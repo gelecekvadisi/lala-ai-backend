@@ -19,6 +19,6 @@ class FavoriteAssistant extends Model
     }
 
     public function asistant(){ 
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Suggestion::class);
     }
 }

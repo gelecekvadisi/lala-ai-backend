@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Category;
+use App\Models\Suggestion;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('favorite_assistants', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Category::class, 'assistant_id');
+            $table->foreignIdFor(Suggestion::class, 'assistant_id');
             $table->timestamps();
         });
     }

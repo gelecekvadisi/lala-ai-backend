@@ -42,7 +42,7 @@ class FavoriteAssistantController extends Controller
 
         $request->validate([
             // 'user_id' => 'nullable|exists:users,id',
-            'assistant_id' => 'required|exists:categories,id',
+            'assistant_id' => 'required|exists:suggestions,id',
         ]);
 
         $favorite = FavoriteAssistant::create([
@@ -78,7 +78,7 @@ class FavoriteAssistantController extends Controller
     {
         $request->validate([
             'user_id' => 'required|exists:users,id',
-            'assistant_id' => 'required|exists:categories,id',
+            'assistant_id' => 'required|exists:suggestions,id',
         ]);
 
         $favoriteAssistant->update($request->all());
@@ -101,7 +101,7 @@ class FavoriteAssistantController extends Controller
         // İsteği doğrulama
         $request->validate([
             'user_id' => 'required|exists:users,id',
-            'assistant_id' => 'required|exists:categories,id',
+            'assistant_id' => 'required|exists:suggestions,id',
         ]);
 
         // Kullanıcı ve assistant_id ile eşleşen kaydı silme
