@@ -10,6 +10,7 @@
         <td>{{ $suggestion->image_name ?? '' }}</td>
         <td class="text-start">{{ Str::limit($suggestion->suggestions, 80) }}</td>
         <td>{{ $suggestion->category->name ?? '' }}</td>
+        <td>{{ $suggestion->assistant_id ?? '' }}</td>
         <td class="text-center w-150">
             @can('suggestions-update')
                 <label class="switch">

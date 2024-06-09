@@ -39,6 +39,7 @@
                             <th>{{ __('Image Name') }}</th>
                             <th>{{ __('Suggestion') }}</th>
                             <th >{{ __('Category') }}</th>
+                            <th >{{ __('Assistant ID') }}</th>
                             <th class="text-center">{{ __('Status') }}</th>
                             <th class="text-center">{{ __('Action') }}</th>
                         </tr>
@@ -81,6 +82,11 @@
                         <div class="row">
                             <div class="col-md-5"><p>Category</p></div>
                             <div class="col-md-7"><p id="suggestion_view_category"></p></div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-5"><p>Assistant ID</p></div>
+                            <div class="col-md-7"><p id="suggestion_view_assistant_id"></p></div>
                         </div>
                         <hr>
                         <div class="row">

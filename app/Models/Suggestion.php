@@ -21,6 +21,7 @@ class Suggestion extends Model
         'status',
         'suggestions',
         'category_id',
+        'assistant_id',
     ];
 
     /**

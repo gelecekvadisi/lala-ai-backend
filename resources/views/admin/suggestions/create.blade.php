@@ -28,6 +28,10 @@
                                         <label>{{__('Image Name')}}</label>
                                         <textarea name="image_name" class="form-control" placeholder="Image Name"></textarea>
                                     </div>
+                                    <div class="col-lg-12 mt-2">
+                                        <label>{{__('Assistant ID')}}</label>
+                                        <textarea name="assistant_id" class="form-control" placeholder="Assistant ID"></textarea>
+                                    </div>
                                     <div class="col-lg-6 mt-2">
                                         <label>{{__('Category')}}</label>
                                         <div class="gpt-up-down-arrow position-relative">
