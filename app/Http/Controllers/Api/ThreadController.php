@@ -60,7 +60,9 @@ class ThreadController extends Controller
 
     public function createThread(Request $request)
     {
-        // $request->validate([]);
+        $request->validate([
+            "message" => "nullable|string|max:1000"
+        ]);
         $user = auth()->user();
 
         $text_settings = get_option("text-generate") ?? [];
@@ -81,7 +83,17 @@ class ThreadController extends Controller
                 "OpenAI-Beta" => "assistants=v2",
             ])
                 ->withoutVerifying()
-                ->post("https://api.openai.com/v1/threads");
+                ->post(
+                    "https://api.openai.com/v1/threads",
+                    !isset($request->message) ? null : [
+                        "messages" => [
+                            [
+                                "role" => "user",
+                                "content" => $request->message,
+                            ]
+                        ],
+                    ]
+                );
 
 
             $result = $response->json();
@@ -205,7 +217,7 @@ class ThreadController extends Controller
                 ],
                 "stream" => true,
             ]);
-            
+
 
             $statusCode = $response->getStatusCode();
             if ($statusCode === 200) {
