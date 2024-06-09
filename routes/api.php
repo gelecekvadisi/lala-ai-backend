@@ -42,6 +42,9 @@ Route::prefix('v1')->group(function (){
         Route::post('favorite-assistant/delete', [Api\FavoriteAssistantController::class, 'destroyByUserAndAssistant']);
         Route::post('change-password', [Api\AcnooProfileController::class, 'changePassword']);
         Route::get('subscription/cancel', [Api\AcnooSubscribesController::class, 'cancel']);
+        Route::post('thread', [Api\ThreadController::class, 'createThread']);
+        Route::post('thread/add-message', [Api\ThreadController::class, 'addMessage']);
+        Route::post('thread/runs', [Api\ThreadController::class, 'runs']);
         
         Route::get('adnetworks', [Api\AcnooAdnetworksController::class, 'index']);
         Route::get('api-keys', [Api\AcnooApiKeyController::class, 'index']);
