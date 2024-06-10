@@ -216,6 +216,7 @@ class ThreadController extends Controller
                     "stream" => true,
                 ],
                 "stream" => true,
+                // 'allow_redirects' => true,
             ]);
 
 
@@ -242,6 +243,7 @@ class ThreadController extends Controller
 
                 $streamedResponse->headers->set('Content-Type', 'text/event-stream');
                 $streamedResponse->headers->set('Cache-Control', 'no-cache');
+                // $streamedResponse->headers->set('Connection', 'keep-alive');
                 return $streamedResponse;
             } else {
                 return response()->json(['error' => 'Failed to fetch data'], $statusCode);

@@ -28,4 +28,9 @@ class Category extends Model
     protected $casts = [
         'status' => 'integer',
     ];
+
+    public function assistants()
+    {
+        return $this->hasMany(Suggestion::class);
+    }
 }

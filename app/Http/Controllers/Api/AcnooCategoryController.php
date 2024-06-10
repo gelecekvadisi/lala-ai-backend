@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Suggestion;
 use Illuminate\Http\Request;
 
 class AcnooCategoryController extends Controller
@@ -19,6 +20,9 @@ class AcnooCategoryController extends Controller
         ->where(function ($query) {
             $query->where('status', '=', 1);
             })
+        ->with(['assistants' => function($query) {
+            $query->take(5);
+        }])
         ->latest()
         ->get();
 

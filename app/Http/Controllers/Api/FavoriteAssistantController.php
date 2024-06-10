@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Models\FavoriteAssistant;
+use App\Models\Suggestion;
 use App\Http\Controllers\Controller;
 
 class FavoriteAssistantController extends Controller
@@ -16,7 +17,9 @@ class FavoriteAssistantController extends Controller
         $request->validate([
             'user_id' => 'nullable|exists:users,id',
         ]);
-        $favoriteAssistants = FavoriteAssistant::where('user_id', $request->user_id)->pluck('assistant_id');
+        $favoriteAssistantIds = FavoriteAssistant::where('user_id', $request->user_id)->pluck('assistant_id');
+
+        $favoriteAssistants = Suggestion::whereIn('id', $favoriteAssistantIds)->get();
 
         return response()->json(["data" => $favoriteAssistants]);
     }
