@@ -18,7 +18,7 @@ class OptionTableSeeder extends Seeder
             array('key' => 'adnetwork','value' => '{"video_ad_id":"test1","admob_app_id":"test2","video_ad_status":"1","admob_app_id_status":"1"}','status' => 1,'created_at' => now(),'updated_at' => now()),
             array('key' => 'text-generate','value' => '{"max_tokens":4000,"model":"text-davinci-003","temperature":1,"charge":1}','status' => 1,'created_at' => now(),'updated_at' => now()),
             array('key' => 'image-generate','value' => '{"no_of_image":1,"charge":2}','status' => 1,'created_at' => now(),'updated_at' => now()),
-            array('key' => 'general','value' => '{"title":"Maan AI ChatGpt","logo":"assets\/images\/logo\/logo.png","favicon":"assets\/images\/logo\/favicon.png"}','status' => 1,'created_at' => now(),'updated_at' => now()),
+            array('key' => 'general','value' => '{"title":"Lala AI","logo":"assets\/images\/logo\/logo.png","favicon":"assets\/images\/logo\/favicon.png"}','status' => 1,'created_at' => now(),'updated_at' => now()),
             array('key' => 'gateways','value' => '{"paypal_is_live":"0","paypal_client_id":"ATKxCBB49G3rPw4DG_0vDmygbZeFKubzub7jGWpeUW5jzfElK9qOzqJOfrBTYvS7RuIhoPdWHB4DIdLJ","paypal_client_secret":"EIDqVfraXlxDBMnswmhqP2qYv6rr_KPDgK269T-q1K9tB455OpPL_fc65irFiPBpiVXcoOQwpKqU3PAu","stripe_is_live":"0","stripe_client_id":"pk_test_zOmNeUO71xTTP3jVPVcaQrsO","stripe_client_secret":"sk_test_MGyxDcHhKWRCAooZv4366wK1","sslcommerz_is_live":"0","sslcommerz_client_id":"maant62a8633caf4a3","sslcommerz_client_secret":"maant62a8633caf4a3@ssl"}','status' => 1,'created_at' => now(),'updated_at' => now())
         );
 

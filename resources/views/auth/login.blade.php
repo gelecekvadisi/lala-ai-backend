@@ -14,7 +14,7 @@
         <div class="mybazar-login-wrapper">
             <div class="login-wrapper">
                 <div class="login-body w-100">
-                    <h2>Welcome to<span> Maan OpenAI</span></h2>
+                    <h2>Welcome to<span> Lala AI</span></h2>
                     <h6>Welcome back, Please login in to your account</h6>
                     <form method="POST" action="{{ route('login') }}" class="ajaxform_instant_reload">
                         @csrf
