@@ -4,59 +4,18 @@ namespace App\Http\Controllers\Api;
 
 use Exception;
 use Throwable;
-use App\Models\ApiKey;
-use App\Models\Generate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\RequestException;
-use Psr\Http\Message\StreamInterface;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use App\Traits\AIContactFunctions;
 
 class ThreadController extends Controller
 {
-    private function getApiKey()
-    {
-        $api_keys = ApiKey::whereStatus(1)
-            ->latest()
-            ->get();
-
-        // return $api_keys;
-
-        if (count($api_keys) == 0) {
-            throw new Exception("Yapay Zeka ile iletişim kurulamadı!", 422);
-        }
-
-        return $api_keys[0];
-    }
-
-    private function checkUserPlan($user, int $total_cost)
-    {
-        return null;
-        if ($user->will_expire <= now()) {
-            return response()->json(
-                [
-                    "message" => __(
-                        'Plan süreniz sona erdi' . $user->will_expire
-                    ),
-                ],
-                402
-            );
-        } else if ($user->credits < $total_cost) {
-            return response()->json(
-                [
-                    "message" => __(
-                        'Yeterli krediniz yok.'
-                    ),
-                ],
-                402
-            );
-        }
-        return null;
-    }
+   use AIContactFunctions;
 
     public function createThread(Request $request)
     {
