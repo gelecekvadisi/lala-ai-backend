@@ -93,7 +93,7 @@ class ThreadController extends Controller
             "thread_id" => "required|string",
             "message" => "required|string|max:1000"
         ]);
-        $user = auth()->user();
+        /* $user = auth()->user();
 
         $text_settings = get_option("text-generate") ?? [];
         $total_cost = 0;//$text_settings["charge"] ?? 1;    //  Metin ve görsel oluşturmada kredi harcama kapatıldı.
@@ -101,7 +101,7 @@ class ThreadController extends Controller
         $userPlanMessage = $this->checkUserPlan($user, $total_cost);
         if (isset($userPlanMessage)) {
             return $userPlanMessage;
-        }
+        } */
 
         DB::beginTransaction();
         try {

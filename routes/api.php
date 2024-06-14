@@ -17,11 +17,17 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')->group(function (){
     Route::post('/sign-in', [Api\Auth\AuthController::class, 'login']);
     Route::post('/sign-up', [Api\Auth\AuthController::class, 'registration']);
-
+    
     Route::post('/send-reset-code',[Api\Auth\AcnooForgotPasswordController::class, 'sendResetCode']);
     Route::post('/verify-reset-code',[Api\Auth\AcnooForgotPasswordController::class, 'verifyResetCode']);
     Route::post('/password-reset',[Api\Auth\AcnooForgotPasswordController::class, 'resetPassword']);
+    
+    Route::post('thread', [Api\ThreadController::class, 'createThread']);
+    Route::post('thread/add-message', [Api\ThreadController::class, 'addMessage']);
+    Route::post('thread/runs', [Api\ThreadController::class, 'runs']);
 
+    Route::apiResource('exam', Api\ExamController::class)->only('show');
+    
     Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::apiResource('banners', Api\AcnooBannerController::class)->only('index');
         Route::apiResource('terms', Api\AcnooTermsController::class)->only('index');
@@ -39,13 +45,10 @@ Route::prefix('v1')->group(function (){
         Route::apiResource('credits', Api\CreditController::class)->only('index', 'store');
         Route::apiResource('buy-credits', Api\AcnooBuyCreditsContrller::class)->only('index', 'show');
         Route::apiResource('favorite-assistant', Api\FavoriteAssistantController::class);
-        Route::apiResource('exam', Api\ExamController::class);
+        Route::apiResource('exam', Api\ExamController::class)->only('index', 'store', 'update', 'destroy');
         Route::post('favorite-assistant/delete', [Api\FavoriteAssistantController::class, 'destroyByUserAndAssistant']);
         Route::post('change-password', [Api\AcnooProfileController::class, 'changePassword']);
         Route::get('subscription/cancel', [Api\AcnooSubscribesController::class, 'cancel']);
-        Route::post('thread', [Api\ThreadController::class, 'createThread']);
-        Route::post('thread/add-message', [Api\ThreadController::class, 'addMessage']);
-        Route::post('thread/runs', [Api\ThreadController::class, 'runs']);
         
         Route::get('adnetworks', [Api\AcnooAdnetworksController::class, 'index']);
         Route::get('api-keys', [Api\AcnooApiKeyController::class, 'index']);
