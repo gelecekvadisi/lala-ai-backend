@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('exams', function (Blueprint $table) {
-            $table->id();
+            $table->string('id')->primary(); // id alanını string ve primary key olarak ayarlıyoruz
             $table->string("name");
             $table->string("image_name");
             $table->string("assistant_id");
@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string("soru_sayisi");
             $table->string("zorluk_seviyesi");
             $table->string("konu");
-            // $table->json("fields");
             $table->boolean("status")->default(1);
             $table->timestamps();
         });
