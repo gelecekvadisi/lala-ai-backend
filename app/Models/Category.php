@@ -18,6 +18,7 @@ class Category extends Model
         'name',
         'image',
         'status',
+        'up_category',
     ];
 
     /**
@@ -32,5 +33,21 @@ class Category extends Model
     public function assistants()
     {
         return $this->hasMany(Suggestion::class);
+    }
+
+    /**
+     * Üst kategori ilişkisi
+     */
+    public function parentCategory()
+    {
+        return $this->belongsTo(Category::class, 'up_category');
+    }
+
+    /**
+     * Alt kategoriler ilişkisi
+     */
+    public function subCategories()
+    {
+        return $this->hasMany(Category::class, 'up_category');
     }
 }
