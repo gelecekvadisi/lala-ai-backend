@@ -19,6 +19,7 @@ class Exam extends Model
         'soru_sayisi',
         'zorluk_seviyesi',
         'konu',
+        'spreadsheet_id',
         'status',
     ];
 
@@ -49,5 +50,14 @@ class Exam extends Model
                 throw $e;
             }
         });
+    }
+
+    public static function generateId() {
+        $tempId = null;
+            do {
+                //  010000 - 999999
+                $tempId = str_pad(mt_rand(10000, 999999), 6, '0', STR_PAD_LEFT);
+            } while (Exam::where('id', $tempId)->exists());
+            return $tempId;
     }
 }

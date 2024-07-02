@@ -27,6 +27,7 @@ Route::prefix('v1')->group(function (){
     Route::post('thread/runs', [Api\ThreadController::class, 'runs']);
 
     Route::apiResource('exam', Api\ExamController::class)->only('show');
+    Route::post('exam/finish-for-student', [Api\ExamController::class, "finishExamForStudent"]);
     
     Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::apiResource('banners', Api\AcnooBannerController::class)->only('index');
@@ -49,6 +50,7 @@ Route::prefix('v1')->group(function (){
         Route::post('favorite-assistant/delete', [Api\FavoriteAssistantController::class, 'destroyByUserAndAssistant']);
         Route::post('change-password', [Api\AcnooProfileController::class, 'changePassword']);
         Route::get('subscription/cancel', [Api\AcnooSubscribesController::class, 'cancel']);
+        Route::post('/add-row', [Api\GoogleSheetsController::class, 'addRow']);
         
         Route::get('adnetworks', [Api\AcnooAdnetworksController::class, 'index']);
         Route::get('api-keys', [Api\AcnooApiKeyController::class, 'index']);

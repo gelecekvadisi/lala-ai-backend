@@ -14,17 +14,20 @@ class AcnooCategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::when(request('search'), function($q) {
-            $q->where('name', 'like', '%'.request('search').'%');
+        $categories = Category::when(request('search'), function ($q) {
+            $q->where('name', 'like', '%' . request('search') . '%');
         })
-        ->where(function ($query) {
-            $query->where('status', '=', 1);
+            ->where(function ($query) {
+                $query->where('status', '=', 1);
             })
-        ->with(['assistants' => function($query) {
-            $query->take(5);
-        }])
-        ->latest()
-        ->get();
+            ->orderBy('id', 'DESC')
+            ->latest()
+            ->with([
+                'assistants' => function ($query) {
+                    $query->take(50);
+                }
+            ])
+            ->get();
 
         return response()->json($categories);
     }

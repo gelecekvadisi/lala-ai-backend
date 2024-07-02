@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string("soru_sayisi");
             $table->string("zorluk_seviyesi");
             $table->string("konu");
+            $table->string("spreadsheet_id");
             $table->boolean("status")->default(1);
             $table->timestamps();
         });

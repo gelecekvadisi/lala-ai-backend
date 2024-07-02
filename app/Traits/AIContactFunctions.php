@@ -48,7 +48,7 @@ trait AIContactFunctions
         return null;
     }
 
-    public function sendComplationsPrompt($api_key, $prompt_list)
+    public function sendComplationsPrompt($api_key, $prompt_list, $tools, $isJsonModel)
     {
         $data = [];
         $response = Http::withHeaders([
@@ -62,6 +62,9 @@ trait AIContactFunctions
                 "model" => "gpt-4o",
                 "max_tokens" => 4000,
                 "temperature" => 1.0,
+                "response_format" => $isJsonModel ? [ "type" => "json_object" ] : null,
+                // "tools" => $tools,
+                // "tool_choice" => "auto",
             ]);
 
         $result = $response->json();
@@ -70,7 +73,7 @@ trait AIContactFunctions
             foreach ($result["choices"] as $choice) {
                 $data[] = trim($choice["message"]["content"]);
             }
-            return $data;
+            return empty($data) ? "" : $data[0];
         }
     }
 }
