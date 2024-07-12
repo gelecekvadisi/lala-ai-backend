@@ -37,7 +37,7 @@ Route::prefix('v1')->group(function (){
         Route::apiResource('categories', Api\AcnooCategoryController::class)->only('index');
         Route::apiResource('lang', Api\AcnooLanguageController::class)->only('index', 'store');
         Route::apiResource('profile', Api\AcnooProfileController::class)->only('index', 'store');
-        Route::apiResource('suggestions', Api\AcnooSuggestionsController::class)->only('index');
+        Route::apiResource('suggestions', Api\AcnooSuggestionsController::class)->only('index', 'show');
         Route::apiResource('plans', Api\AcnooSubscriptionsController::class)->only('index');
         Route::apiResource('subscribes', Api\AcnooSubscribesController::class)->only('index', 'store');
         Route::apiResource('texts', Api\TextsController::class)->only('index', 'store');

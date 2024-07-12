@@ -21,4 +21,15 @@ class AcnooSuggestionsController extends Controller
 
         return response()->json($suggestions);
     }
+
+    public function show($id)
+    {
+        $suggestion = Suggestion::find($id);
+
+        if (!$suggestion) {
+            return response()->json(['message' => 'Assistan verisi bulunamadı'], 404);
+        }
+
+        return response()->json($suggestion);
+    }
 }
