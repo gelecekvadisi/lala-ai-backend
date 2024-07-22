@@ -10,7 +10,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class PermissionSeeder extends Seeder
 {
-        /**
+    /**
      * Run the database seeds.
      *
      * @return void
@@ -30,6 +30,7 @@ class PermissionSeeder extends Seeder
                 'generates' => 'r,d',
                 'suggestions' => 'r,c,u,d',
                 'faqs' => 'r,c,u,d',
+                'guide-ai-assistant' => 'r,c,u,d', // Yeni izin burada ekleniyor
 
                 // settings
                 'settings' => 'r,u',
@@ -53,6 +54,7 @@ class PermissionSeeder extends Seeder
                 'plans' => 'r,c,u,d',
                 'suggestions' => 'r,c,u,d',
                 'faqs' => 'r,c,u,d',
+                'guide-ai-assistant' => 'r,c,u,d', // Yeni izin burada ekleniyor
                 'policies' => 'r,c,u,d',
                 'terms' => 'r,c,u,d',
             ],
@@ -63,6 +65,7 @@ class PermissionSeeder extends Seeder
                 'categories' => 'r,c,u,d',
                 'suggestions' => 'r,c,u,d',
                 'faqs' => 'r,c,u,d',
+                'guide-ai-assistant' => 'r,c,u,d', // Yeni izin burada ekleniyor
                 'policies' => 'r,c,u,d',
                 'terms' => 'r,c,u,d',
             ],

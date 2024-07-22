@@ -39,6 +39,10 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'a
     Route::post('suggestions/status/{id}',[ADMIN\AcnooSuggestionController::class,'status'])->name('suggestions.status');
     Route::post('suggestions/delete-all',[ADMIN\AcnooSuggestionController::class,'deleteAll'])->name('suggestions.delete-all');
 
+    Route::resource('guide-ai-assistant', ADMIN\GuideAiAssistantController::class)->except('show');
+    Route::post('guide-ai-assistant/status/{id}',[ADMIN\GuideAiAssistantController::class,'status'])->name('guide-ai-assistant.status');
+    Route::post('guide-ai-assistant/delete-all',[ADMIN\GuideAiAssistantController::class,'deleteAll'])->name('guide-ai-assistant.delete-all');
+
     Route::resource('faqs', ADMIN\AcnooFaqController::class)->except('show');
     Route::post('faqs/status/{id}',[ADMIN\AcnooFaqController::class,'status'])->name('faqs.status');
     Route::post('faqs/delete-all',[ADMIN\AcnooFaqController::class,'deleteAll'])->name('faqs.delete-all');
