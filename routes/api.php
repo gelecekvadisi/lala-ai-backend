@@ -48,6 +48,8 @@ Route::prefix('v1')->group(function (){
         Route::apiResource('favorite-assistant', Api\FavoriteAssistantController::class);
         Route::apiResource('exam', Api\ExamController::class)->only('index', 'store', 'update', 'destroy');
         Route::apiResource('guide-ai-assistant', Api\GuideAiAssistantController::class)->only('index');
+        Route::apiResource('guide-intelligence-category', Api\GuideIntelligenceCategoryController::class)->only('index', 'store', 'update', 'destroy');
+        Route::apiResource('guide-intelligence', Api\GuideIntelligenceController::class)->only('index', 'store', 'update', 'destroy');
         Route::post('favorite-assistant/delete', [Api\FavoriteAssistantController::class, 'destroyByUserAndAssistant']);
         Route::post('change-password', [Api\AcnooProfileController::class, 'changePassword']);
         Route::get('subscription/cancel', [Api\AcnooSubscribesController::class, 'cancel']);
